@@ -11,11 +11,12 @@ import UIKit
 class PurchaseViewController: UIViewController {
     var selectedType: String?
     var selectedFare: Fare?
+    var currentTicketNum: Int = 0
+    var currentTotal: Double = 0.0
     
     @IBOutlet weak var confirmLbl: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
     @IBOutlet weak var passLbl: UILabel!
-    //@IBOutlet weak var numTicket: UIButton!
     @IBOutlet weak var totalLbl: UILabel!
     @IBOutlet weak var numLbl: UILabel!
     
@@ -29,6 +30,15 @@ class PurchaseViewController: UIViewController {
             passLbl.text = selectedFare?.description
             numLbl.text = "1"
             totalLbl.text = "Buy 1 ticket - $" + String(format: "%.2f", fare.price!)
+            
+            currentTicketNum = 1
+            currentTotal = calculate()
+        }
+        else { //shouldn't happen though
+            typeLbl.text = ""
+            passLbl.text = ""
+            numLbl.text = "0"
+            totalLbl.text = "Buy 0 ticket - $0.00"
         }
     }
     
@@ -37,20 +47,29 @@ class PurchaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func calculate() -> Double {
+        if let price = selectedFare?.price {
+            let total = Double(currentTicketNum) * price
+            return total
+        }
+        else {
+            return 0.0
+        }
+    }
+    
     @IBAction func add(_ sender: Any) {
-        var num = Int(numLbl.text!)!
-        num = num + 1
-        numLbl.text = "\(num)"
-        let total = Double(num) * (selectedFare?.price)!
+        currentTicketNum = Int(numLbl.text!)! + 1
+        numLbl.text = "\(currentTicketNum)"
+        currentTotal = calculate()
         
-        let tic = num > 1 ? "tickets" : "ticket"
-        totalLbl.text = "Buy " + "\(num) " + tic + " - $" + String(format: "%.2f", total)
+        let tic = currentTicketNum > 1 ? "tickets" : "ticket"
+        totalLbl.text = "Buy " + "\(currentTicketNum) " + tic + " - $" + String(format: "%.2f", currentTotal)
     }
     
     @IBAction func subtract(_ sender: Any) {
         var num = Int(numLbl.text!)!
-        if num == 1 {
-            let alert = UIAlertController(title: "Cannot subtract ticket", message: "Minimum is 1", preferredStyle: .alert)
+        if num == 0 {
+            let alert = UIAlertController(title: "Cannot subtract ticket", message: nil, preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default)
             alert.addAction(ok)
             present(alert, animated: true)
@@ -58,11 +77,12 @@ class PurchaseViewController: UIViewController {
         }
         
         num = num - 1
-        numLbl.text = "\(num)"
-        let total = Double(num) * (selectedFare?.price)!
+        currentTicketNum = num
+        numLbl.text = "\(currentTicketNum)"
+        currentTotal = calculate()
         
-        let tic = num > 1 ? "tickets" : "ticket"
-        totalLbl.text = "Buy " + "\(num) " + tic + " - $" + String(format: "%.2f", total)
+        let tic = currentTicketNum > 1 ? "tickets" : "ticket"
+        totalLbl.text = "Buy " + "\(currentTicketNum) " + tic + " - $" + String(format: "%.2f", currentTotal)
     }
     
     

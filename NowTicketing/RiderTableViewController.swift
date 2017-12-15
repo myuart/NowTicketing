@@ -16,7 +16,9 @@ class RiderTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if tickets.count == 0 {
-            loadFromFile()
+            guard let file = Bundle.main.url(forResource: "ticket", withExtension: "json") else { return }
+            
+            tickets = loadFromFile(file: file)
         }
         
     }
@@ -26,13 +28,13 @@ class RiderTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func loadFromFile() {
-        guard let file = Bundle.main.url(forResource: "ticket", withExtension: "json") else { return }
+    func loadFromFile(file : URL) -> [Ticket] {
+        var alltickets = [Ticket]()
         
         do {
             let data = try Data(contentsOf: file)
             guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject] else  {
-                return
+                return alltickets
             }
             
             for (key, _) in json {
@@ -50,14 +52,16 @@ class RiderTableViewController: UITableViewController {
                 
                 let ticket  = Ticket(tpe: key, text: json[key]?["subtext"] as? String ?? "", fareAry: allFares)
                 
-                tickets.append(ticket)
+                alltickets.append(ticket)
             }
             
-            tickets.sort(by: {$0.type! < $1.type!})
+            alltickets.sort(by: {$0.type! < $1.type!})
         }
         catch {
-            
+            print("Error parsing JSON file")
         }
+        
+        return alltickets
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
