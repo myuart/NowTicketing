@@ -32,7 +32,7 @@ class PurchaseViewController: UIViewController {
             totalLbl.text = "Buy 1 ticket - $" + String(format: "%.2f", fare.price!)
             
             currentTicketNum = 1
-            currentTotal = calculate()
+            currentTotal = calculate(numOfTicket: currentTicketNum)
         }
         else { //shouldn't happen though
             typeLbl.text = ""
@@ -47,9 +47,9 @@ class PurchaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func calculate() -> Double {
+    func calculate(numOfTicket: Int) -> Double {
         if let price = selectedFare?.price {
-            let total = Double(currentTicketNum) * price
+            let total = Double(numOfTicket) * price
             return total
         }
         else {
@@ -60,7 +60,7 @@ class PurchaseViewController: UIViewController {
     @IBAction func add(_ sender: Any) {
         currentTicketNum = Int(numLbl.text!)! + 1
         numLbl.text = "\(currentTicketNum)"
-        currentTotal = calculate()
+        currentTotal = calculate(numOfTicket: currentTicketNum)
         
         let tic = currentTicketNum > 1 ? "tickets" : "ticket"
         totalLbl.text = "Buy " + "\(currentTicketNum) " + tic + " - $" + String(format: "%.2f", currentTotal)
@@ -68,8 +68,8 @@ class PurchaseViewController: UIViewController {
     
     @IBAction func subtract(_ sender: Any) {
         var num = Int(numLbl.text!)!
-        if num == 0 {
-            let alert = UIAlertController(title: "Cannot subtract ticket", message: nil, preferredStyle: .alert)
+        if num  <= 1 {
+            let alert = UIAlertController(title: "Cannot subtract ticket", message: "Minimum is 1", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default)
             alert.addAction(ok)
             present(alert, animated: true)
@@ -79,7 +79,7 @@ class PurchaseViewController: UIViewController {
         num = num - 1
         currentTicketNum = num
         numLbl.text = "\(currentTicketNum)"
-        currentTotal = calculate()
+        currentTotal = calculate(numOfTicket: currentTicketNum)
         
         let tic = currentTicketNum > 1 ? "tickets" : "ticket"
         totalLbl.text = "Buy " + "\(currentTicketNum) " + tic + " - $" + String(format: "%.2f", currentTotal)

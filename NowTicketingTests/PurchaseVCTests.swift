@@ -30,18 +30,18 @@ class PurchaseVCTests: XCTestCase {
         viewController.selectedFare = Fare(desc: "2.5 Hour Ticket", pr:1.5)
         
         viewController.currentTicketNum = 1
-        let total = viewController.calculate()
+        let total = viewController.calculate(numOfTicket: viewController.currentTicketNum)
         
-        XCTAssertNotEqual(total, 2.5, "AssertNotEqual addition failed for total price")
+        XCTAssertNotEqual(total, 2.5, "calculate() AssertNotEqual failed for total price")
     }
     
     func testCalculation2() {
         viewController.selectedFare = Fare(desc: "1 Day Pass", pr: 2.0)
         
         viewController.currentTicketNum = 6
-        let total = viewController.calculate()
+        let total = viewController.calculate(numOfTicket: viewController.currentTicketNum)
         
-        XCTAssertEqual(total, 12.0, "AssertEqual addition failed for total price")
+        XCTAssertEqual(total, 12.0, "calculate() AssertEqual failed for total price")
     }
     
     

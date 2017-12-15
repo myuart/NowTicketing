@@ -110,10 +110,10 @@
 		D745C9A61FE3556D00BABD34 /* NowTicketingTests */ = {
 			isa = PBXGroup;
 			children = (
-				D79325011FE4517400767C5E /* PurchaseVCTests.swift */,
-				D79324FF1FE4516D00767C5E /* FareTableVCTests.swift */,
-				D79324FD1FE4516300767C5E /* test.json */,
 				D745C9A71FE3556D00BABD34 /* NowTicketingTests.swift */,
+				D79324FF1FE4516D00767C5E /* FareTableVCTests.swift */,
+				D79325011FE4517400767C5E /* PurchaseVCTests.swift */,
+				D79324FD1FE4516300767C5E /* test.json */,
 				D745C9A91FE3556D00BABD34 /* Info.plist */,
 			);
 			path = NowTicketingTests;

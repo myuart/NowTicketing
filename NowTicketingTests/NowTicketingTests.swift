@@ -50,9 +50,6 @@ class NowTicketingTests: XCTestCase {
         XCTAssertEqual(data?.tableView((viewController?.tableView)!, numberOfRowsInSection: 0), 3, "")
         
         let fares = [Fare]()
-        //fares.append(Fare(desc: "2.5 Hour Ticket", pr:2.5))
-        //fares.append(Fare(desc: "1 Day Pass", pr:5.0))
-        //fares.append(Fare(desc: "30 Day Pass", pr:100))
         
         //use Adult type to test
         let rider = Ticket(tpe: "Adult", text:"", fareAry: fares)
