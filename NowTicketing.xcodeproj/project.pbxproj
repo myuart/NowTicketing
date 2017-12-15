@@ -18,6 +18,9 @@
 		D745C9BB1FE357BB00BABD34 /* ticket.json in Resources */ = {isa = PBXBuildFile; fileRef = D745C9BA1FE357BB00BABD34 /* ticket.json */; };
 		D745C9BD1FE357E300BABD34 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745C9BC1FE357E300BABD34 /* Ticket.swift */; };
 		D745C9BF1FE3580400BABD34 /* Fare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745C9BE1FE3580400BABD34 /* Fare.swift */; };
+		D79324FE1FE4516300767C5E /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = D79324FD1FE4516300767C5E /* test.json */; };
+		D79325001FE4516D00767C5E /* FareTableVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79324FF1FE4516D00767C5E /* FareTableVCTests.swift */; };
+		D79325021FE4517400767C5E /* PurchaseVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79325011FE4517400767C5E /* PurchaseVCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		D745C9BA1FE357BB00BABD34 /* ticket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ticket.json; path = Data/ticket.json; sourceTree = "<group>"; };
 		D745C9BC1FE357E300BABD34 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket.swift; path = Model/Ticket.swift; sourceTree = "<group>"; };
 		D745C9BE1FE3580400BABD34 /* Fare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fare.swift; path = Model/Fare.swift; sourceTree = "<group>"; };
+		D79324FD1FE4516300767C5E /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		D79324FF1FE4516D00767C5E /* FareTableVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareTableVCTests.swift; sourceTree = "<group>"; };
+		D79325011FE4517400767C5E /* PurchaseVCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseVCTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,9 @@
 		D745C9A61FE3556D00BABD34 /* NowTicketingTests */ = {
 			isa = PBXGroup;
 			children = (
+				D79325011FE4517400767C5E /* PurchaseVCTests.swift */,
+				D79324FF1FE4516D00767C5E /* FareTableVCTests.swift */,
+				D79324FD1FE4516300767C5E /* test.json */,
 				D745C9A71FE3556D00BABD34 /* NowTicketingTests.swift */,
 				D745C9A91FE3556D00BABD34 /* Info.plist */,
 			);
@@ -223,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79324FE1FE4516300767C5E /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +256,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79325021FE4517400767C5E /* PurchaseVCTests.swift in Sources */,
 				D745C9A81FE3556D00BABD34 /* NowTicketingTests.swift in Sources */,
+				D79325001FE4516D00767C5E /* FareTableVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +462,7 @@
 				D745C9AE1FE3556D00BABD34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D745C9AF1FE3556D00BABD34 /* Build configuration list for PBXNativeTarget "NowTicketingTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +471,7 @@
 				D745C9B11FE3556D00BABD34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

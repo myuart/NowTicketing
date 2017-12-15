@@ -1,0 +1,8 @@
+{
+    "Child": {
+        "fares": [
+                  { "description": "2.5 Hour Ticket", "price": 1.5 }
+                  ],
+        "subtext": "Ages 8-17"
+    }
+}
